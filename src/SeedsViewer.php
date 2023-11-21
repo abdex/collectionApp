@@ -21,9 +21,9 @@ class SeedsViewer
     public static function displayAllSeeds(array $seeds): string
     {
          if (empty($seeds)){
-            $output = "Sorry, the apocalypse has happened and you've run out of seeds!";
+            return "Sorry, the apocalypse has happened and you've run out of seeds!";
         }
-        
+
         $output = '';
 
         foreach ($seeds as $seed) {
