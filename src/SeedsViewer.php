@@ -1,0 +1,41 @@
+<?php
+
+require_once 'src/Seed.php';
+require_once 'src/SeedsModel.php';
+
+class SeedsViewer
+{
+    public static function displaySingleSeed(Seed $seed): string
+    {
+            $output = '<div>';
+            $output .= "<h1>$seed->name</h1>";
+            $output .= "<p>$seed->family_name</p>";
+            $output .= "<p>$seed->species</p>";
+            $output .= "<p>$seed->description</p>";
+            $output .= "<img src='$seed->image' />";
+            $output .= '</div>';
+
+        return $output;
+    }
+
+    public static function displayAllSeeds(array $seeds): string
+    {
+        $output = '';
+        
+        if (empty($seeds)){
+            $output = "Sorry, the apocalypse has happened on and you've run out of seeds!";
+        }
+
+        foreach ($seeds as $seed) {
+            $output .= '<div>';
+            $output .= "<h1>$seed->name</h1>";
+            $output .= "<p>$seed->family_name</p>";
+            $output .= "<p>$seed->species</p>";
+            $output .= "<p>$seed->description</p>";
+            $output .= "<img src='$seed->image' />";
+            $output .= '</div>';
+        }
+
+        return $output;
+    }
+}
