@@ -20,11 +20,11 @@ class SeedsViewer
 
     public static function displayAllSeeds(array $seeds): string
     {
-        $output = '';
-        
-        if (empty($seeds)){
-            $output = "Sorry, the apocalypse has happened on and you've run out of seeds!";
+         if (empty($seeds)){
+            $output = "Sorry, the apocalypse has happened and you've run out of seeds!";
         }
+        
+        $output = '';
 
         foreach ($seeds as $seed) {
             $output .= '<div>';
