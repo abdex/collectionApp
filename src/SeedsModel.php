@@ -31,7 +31,7 @@ class SeedsModel
 
     public function getAllSeeds()
     {
-        $query = $this->db->prepare("SELECT `seeds`.`name`, 
+        $query = $this->db->prepare("SELECT `seeds`.`id`, `seeds`.`name`, 
         `plant_family`.`common_name` AS 'family_name', 
         `seeds`.`species`, 
         `seeds`. `image`, 
@@ -45,6 +45,7 @@ class SeedsModel
 
         foreach($seeds as $seed){
             $seedsObjs[] = new Seed(
+                $seed['id'],
                 $seed['name'],
                 $seed['family_name'],
                 $seed['species'],
