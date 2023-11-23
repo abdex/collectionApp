@@ -56,31 +56,23 @@ class SeedsModel
         return $seedsObjs;
     }
 
-    public function addASeed(PDO $db, string $name, string $family_name, string $species, string $image, string $description): bool
-    {
-        function connectToDb(): PDO {
-            $db = new PDO('mysql:host=db; dbname=seed_vault', 'root', 'password');
-            $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-            return $db;
-        }
-        
-        {
-            $query = $db->prepare(
+    public function addASeed(string $name, int $genus, string $species, string $image, string $description): bool
+    {   
+            $query = $this->db->prepare(
                 'INSERT INTO `seeds`
-                    (`name`, `family_name`, `species`, `image`, `description`)
-                    VALUES (:name, :family_name, :species, :image, :description);'
+                    (`name`, `genus`, `species`, `image`, `description`)
+                    VALUES (:name, :genus, :species, :image, :description);'
                 );
         
             $query->bindParam(':name', $name);
-            $query->bindParam(':family_name', $family_name);
+            $query->bindParam(':genus', $genus);
             $query->bindParam(':species', $species);
             $query->bindParam(':image', $image);
             $query->bindParam(':description', $description);
         
-            // Run the query
+            
             $success = $query->execute();
             return $success;
-        }
 
     }
 

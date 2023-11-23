@@ -1,0 +1,54 @@
+html {
+    padding: 40px;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThK7G7FTOeOrh4M0cxN_qDWkgT53k86kETYA&usqp=CAU");
+}
+
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
+    gap: 10px;
+    margin: 10px;
+    padding: 15px;
+    color: darkolivegreen;
+    width: 75%;
+    background-color: aquamarine;
+    border: 2px solid black;
+    border-radius: 8%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+label, input {
+    margin: 10px;
+    padding-bottom: 5px;
+}
+
+input {
+    border: 1px solid black;
+}
+
+#addSeedButton {
+    border-radius: 10%;
+}
+
+h1, h2, p {
+    color: mediumspringgreen;
+    text-align: center;
+    display: inline-block;
+    background-color: rgba(48, 44, 43, 0.6);
+    margin: 40px;
+    padding: 20px;
+    border-radius: 10%;
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
+img {
+    display: block;
+    width: 70%;
+    border: 22px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
