@@ -29,8 +29,8 @@ class SeedsViewer
         foreach ($seeds as $seed) {
             $output .= '<div>';
             $output .= "<h2>$seed->name</h2>";
-            $output .= "<p>$seed->family_name</p>";
-            $output .= "<p>$seed->species</p>";
+            $output .= "<p>Plant family: $seed->family_name</p>";
+            $output .= "<p>Species: $seed->species</p>";
             $output .= "<p>$seed->description</p>";
             $output .= "<img src='$seed->image' />";
             $output .= '</div>';

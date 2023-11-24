@@ -15,10 +15,6 @@ FROM `seeds`
 	INNER JOIN `plant_family`
 		ON `seeds`.`genus` = `plant_family`.`id`');
 
-$query->execute();
-
-$result = $query->fetchAll();
-
 $seedsModel = new SeedsModel($db); 
 $seeds = $seedsModel->getAllSeeds();
 
@@ -37,17 +33,16 @@ if (
     $description = $_POST['description'];
 
     if (strlen($name) == 0 || strlen($name) > 31) {
-        echo "Please fill in seed name that is between 1 to 30 characters!";
-    } else if (intval($genus) == 0 || intval($genus) > 6) {
-        echo "Please select a Plant Value from the dropdown menu!";
-    } else if (strlen($species) == 0 || strlen($species) > 41) {
-        echo "Please fill in species name that is between 1 to 40 characters!";
-    } else if (strlen($image) == 0 || strlen($image) > 2000) {
-        echo  "Please fill in a URL of an image that is between 1 to 2000 characters!";
-    } else if (strlen($description) == 0 || strlen($description) > 2000) {
-        echo "Please write a description that is between 1 to 500 characters!";
+        $nameError =  "<p class='errorMess'>Please fill in seed name that is between 1 to 30 characters!</p>";
+    } if (intval($genus) == 0 || intval($genus) > 6) {
+        $genusError = "<p class='errorMess'>Please select a Plant Value from the dropdown menu!</p>";
+    } if (strlen($species) == 0 || strlen($species) > 41) {
+        $speciesError =  "<p class='errorMess'>Please fill in species name that is between 1 to 40 characters!</p>";
+    } if (strlen($image) == 0 || strlen($image) > 2000) {
+        $imageError =  "<p class='errorMess'>Please fill in a URL of an image that is between 1 to 2000 characters!</p>";
+    } if (strlen($description) == 0 || strlen($description) > 2000) {
+        $descriptionError =  "<p class='errorMess'>Please write a description that is between 1 to 500 characters!</p>";
     } else {
-        $seedsModel = new SeedsModel($db);
         $success = $seedsModel->addASeed ($name, $genus, $species, $image, $description);
      } 
 
@@ -61,18 +56,22 @@ if (
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <title>Abby's Seed Vault</title>
     
 </head>
 <body>
-    <h1>Abby's Seed Vault</h1>
+    <h1 id="titlePage"><strong>ABBY'S SEED VAULT</strong></h1>
     <br/>
-    <h2 class="pageTitle">Please add New Seeds!</h2>
-        <div class="formContainer">
-            <form method = "POST">
-                <label for="name">Name of Plant Seed:</label>
+        <div class= "outerContainer">
+            <h2 id="formTitle">Please add New Seeds!</h2>
+            <form method = "POST" class="formGridContainer">
+                <label class ="grid" for="name">Name of Plant Seed:</label>
                 <input type="text" id="name" name="name" />
+                <?php 
+                if (isset($nameError)){
+                    echo $nameError;
+                }
+                ?>
                 <br/>
 
                 <label for="genus">What plant family does it come from? </label>
@@ -84,25 +83,45 @@ if (
                         <option value= "4">Curcibits</option>
                         <option value= "5">Alliums</option>
                     </select>
+                    <?php 
+                    if (isset($genusError)){
+                    echo $genusError;
+                    }
+                ?>
                     <br/>
 
                 <label for="species">What species is it?:</label>
                 <input type="text" id="species" name="species" />
+                <?php 
+                if (isset($speciesError)){
+                    echo $speciesError;
+                }
+                ?>
                 <br/>
 
                 <label for="image">Add an image:</label>
                 <input type="text" id="image" name="image" />
+                <?php 
+                if (isset($imageError)){
+                    echo $imageError;
+                }
+                ?>
                 <br/>
 
                 <label for="description">Write a description (i.e. best planting and harvesting months, how best to cook, fun facts!):</label>
                 <input type="text" id="description" name="description" />
+                <?php 
+                if (isset($descriptionError)){
+                    echo $descriptionError;
+                }
+                ?>
                 <br/>
 
                 <input id = addSeedButton type="submit" value="Add a Seed!" />
 
                 <?php 
                 if (isset($success)){
-                    echo "Thank you for adding a new seed!";
+                    echo "<p class='successMess'>Thank you for adding a new seed!</p>";
                 }
                 ?>
 

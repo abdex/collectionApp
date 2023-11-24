@@ -1,54 +1,87 @@
 html {
     padding: 40px;
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThK7G7FTOeOrh4M0cxN_qDWkgT53k86kETYA&usqp=CAU");
+    font-family: sans-serif;
 }
 
+#formTitle {
+    margin: 0;
+}
 
-.formContainer {
+.outerContainer{
     display: flex;
     flex-direction: column;
-    /* text-align: center; */
-    gap: 10px;
-    margin: 10px;
-    padding: 15px;
-    color: darkolivegreen;
     width: 75%;
-    background-color: aquamarine;
-    border: 2px solid black;
-    border-radius: 8%;
+    max-width: 800px;
+    min-width: 275px;
+    background-color: rgba(48, 44, 43, 0.6);
+    border: 15px solid black;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.formGridContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 2px;
+    margin: 10px;
+    padding: 30px;
+    color: mediumturquoise;
     margin-left: auto;
     margin-right: auto;
+    font-size: 20px;
 }
 
 label, input {
-    margin: 10px;
+    margin: 5px;
     padding-bottom: 5px;
+    text-align: center;
 }
 
-input {
+input , select {
     border: 1px solid black;
+    width: 80%;
+    margin: 0 auto;
 }
 
 #addSeedButton {
     border-radius: 10%;
+    padding: 10px 15px;
+    background-color: lightseagreen;
+    font-size: 20px;
+}
+
+#titlePage {
+    font-size: 30px;
+    text-decoration: underline overline dotted darkkhaki;
+    padding-bottom: 5px;
 }
 
 h1, h2, p {
-    color: mediumspringgreen;
+    color: palegreen;
     text-align: center;
-    display: inline-block;
-    background-color: rgba(48, 44, 43, 0.6);
-    margin: 40px;
+    font-size: 20px;
+    margin: 15px;
     padding: 20px;
     border-radius: 10%;
-    /* margin-left: auto;
-    margin-right: auto; */
 }
 
 img {
     display: block;
     width: 70%;
+    max-width: 800px;
+    min-width: 275px;
     border: 22px solid black;
     margin-left: auto;
     margin-right: auto;
+}
+
+.successMess {
+    color: greenyellow;
+}
+
+.errorMess {
+    color: red;
 }
